@@ -38,6 +38,20 @@
             RC(4,0)                 RC(4,1) RC(4,2) RC(4,3)  RC(10,0) RC(10,1) RC(10,2) RC(10,3) RC(9,4)
         >;
     };
+
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        a-gpios = <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <24>;  // 値を12から24へ変更
+        status = "disabled";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <12>;
+    };
 };
 
 / {
