@@ -28,26 +28,26 @@
             // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         default_layer {
             bindings = <
-                &kp FSLH     &kp COMMA    &kp DOT      &kp MINUS    &kp SEMI     &kp ESC                        &kp L        &kp R        &kp D        &kp Y        &kp P
-                &kp A        &kp O        &kp E        &kp I        &kp U        &kp LCTRL                      &kp G        &kp N        &kp T        &kp S        &kp K
-                &kp X        &kp C        &kp V        &kp W        &kp Q        &kp TAB                        &kp J        &kp H        &kp M        &kp B        &kp Z
-                &kp LALT                               &kp LSHIFT &lt LOWER LANG_ZENKAKUHANKAKU &kp SPACE &kp F &kp ENTER &lt LOWER2 LANG_HIRAGANA     &kp RSHIFT   &mo NUM_L
+                &kp Q        &kp W        &kp E        &kp R        &kp T        &kp ESC                        &kp Y        &kp U        &kp I        &kp O        &kp P
+                &kp A        &kp S        &kp D        &kp F        &kp G        &kp RIGHT_WIN                  &kp H        &kp J        &kp K        &kp L        &kp SEMI
+                &kp Z        &kp X        &kp C        &kp V        &kp B        &kp TAB                        &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH
+                &kp LSHIFT                             &kp LCTRL &lt LOWER LANG_ZENKAKUHANKAKU &kp SPACE &kp MINUS &kp ENTER &lt LOWER2 LANG_HIRAGANA     &kp RSHIFT   &mo NUM_L
             >;
             sensor-bindings = <&rot_kp PG_DN PG_UP>;
         };
     
             // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             // |     /       |      ,     |    END     |     -      |     ;      |    ESC     |                |            |   K_REDO    |   K_UNDO    |      ↑      |     [       |      ]      |
-            // |     HOME    | C_AC_SAVE  |      E     |     I      |     U      |    LCTRL   |                |            |  Backspace  |      ←      |      ↓      |     →       |     DEL     |
-            // |     UNDO    |    CUT     |   COPY     |   PASTE    |     Q      |    TAB     |                |   PSCRN    |      J      |      H      |      M      |     B       |      Z      |
-            // |     L_ALT   |            |            |  L_SHIFT   |    none    |    Space   |                |   ENTER    |   NUMFUN_L  |   R_SHIFT   |             |             |    R_CTR    |
+            // |     HOME    | C_AC_SAVE  |     D      |     F      |     G      |    LCTRL   |                |            |  Backspace  |      ←      |      ↓      |     →       |     DEL     |
+            // |     UNDO    |    CUT     |   COPY     |   PASTE    |     B      |    TAB     |                |   PSCRN    |      N      |      M      |      ,      |     .       |      Z      |
+            // |     L_SHIFT |            |            |  L_SHIFT   |    none    |    Space   |                |   ENTER    |   NUMFUN_L  |   R_SHIFT   |             |             |    R_CTR    |
             // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Lower_layer {
             bindings = <
                 &kp FSLH     &kp COMMA    &kp END      &kp MINUS    &kp SEMI     &kp ESC                        &kp K_REDO   &kp K_UNDO   &kp UP       &kp LBKT     &kp RBKT
                 &kp HOME     &kp S        &kp D        &kp F        &kp G        &kp LCTRL                      &kp BSPC     &kp LEFT     &kp DOWN     &kp RIGHT    &kp DEL
                 &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &kp B        &kp TAB                        &kp N        &kp M        &kp COMMA    &kp DOT      &kp Z
-                &kp LEFT_ALT                           &kp LEFT_SHIFT &none      &kp SPACE         &kp PSCRN    &kp ENTER    &mo NUM_L &kp RSHIFT                   &kp RIGHT_CONTROL
+                &kp LSHIFT                             &kp LEFT_ALT &none      &kp SPACE            &kp PSCRN   &kp ENTER    &mo NUM_L    &kp RSHIFT                &kp RIGHT_CONTROL
             >;
         };
 
