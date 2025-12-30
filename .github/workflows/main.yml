@@ -6,42 +6,28 @@ on:
 jobs:
   build-left:
     runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+
     steps:
-      - name: Checkout keymap repo
+      - name: Checkout Pinkeybd repo (your fork)
         uses: actions/checkout@v4
 
-      - name: Checkout ZMK
-        uses: actions/checkout@v4
-        with:
-          repository: zmkfirmware/zmk
-          path: zmk
-
-      - name: Copy config into ZMK
+      - name: Create ZMK workspace
         run: |
-          rm -rf zmk/config
-          cp -r firmware/zmk-config zmk/config
-
-      - name: Install west
-        run: |
-          python3 -m pip install --upgrade pip
-          pip3 install west
-
-      - name: Init west workspace
-        run: |
-          cd zmk
-          west init -l app
+          west init -m https://github.com/zmkfirmware/zmk.git --mr main zmk-workspace
+          cd zmk-workspace
           west update
-          west zephyr-export
 
-      - name: Build left (pinkeybd_left)
+      - name: Build left (nice_nano_v2 + pinkeybd_left)
         run: |
-          cd zmk
-          west build -p always -b nice_nano_v2 app -- \
+          cd zmk-workspace
+          west build -p always -b nice_nano_v2 -s zmk/app -d build-left -- \
             -DSHIELD=pinkeybd_left \
-            -DZMK_CONFIG=${{ github.workspace }}/zmk/config
+            -DZMK_CONFIG=${GITHUB_WORKSPACE}/firmware/zmk-config
 
-      - name: Upload left uf2
+      - name: Upload UF2 (left)
         uses: actions/upload-artifact@v4
         with:
           name: pinkeybd_left_uf2
-          path: zmk/build/zephyr/zmk.uf2
+          path: zmk-workspace/build-left/zephyr/zmk.uf2
