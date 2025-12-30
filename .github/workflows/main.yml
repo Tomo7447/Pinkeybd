@@ -17,12 +17,19 @@ jobs:
           sudo apt-get install -y git cmake ninja-build gperf ccache dfu-util device-tree-compiler wget python3-pip python3-setuptools python3-wheel xz-utils file make gcc g++ 
           pip3 install --user west
 
-      - name: Create ZMK workspace
+      - name: Create ZMK workspace (no direct git clone from west)
         run: |
-          west init -m https://github.com/zmkfirmware/zmk-manifest.git zmk-workspace
+          mkdir zmk-workspace
           cd zmk-workspace
+
+          # まず manifest を checkout（GitHub Actions の通常経路）
+          git clone https://github.com/zmkfirmware/zmk-manifest.git manifest
+          
+          # west init はローカルの manifest を使う
+          west init -l manifest
           west update
           west zephyr-export
+
 
       - name: Build left (nice_nano_v2 + pinkeybd_left)
         run: |
